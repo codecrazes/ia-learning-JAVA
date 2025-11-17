@@ -1,5 +1,6 @@
 package br.com.fiap.ia_learning.controller;
 
+import br.com.fiap.ia_learning.dto.AlertaDto;
 import br.com.fiap.ia_learning.entity.Alerta;
 import br.com.fiap.ia_learning.service.AlertaService;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +19,9 @@ public class AlertaController {
     @PostMapping("/{usuarioId}")
     public ResponseEntity<Alerta> criar(
             @PathVariable Long usuarioId,
-            @RequestParam String mensagem,
-            @RequestParam String prioridade
+            @RequestBody AlertaDto dto
     ) {
-        return ResponseEntity.ok(alertaService.criar(usuarioId, mensagem, prioridade));
+        return ResponseEntity.ok(alertaService.criar(usuarioId, dto));
     }
 
     @GetMapping("/usuario/{usuarioId}")

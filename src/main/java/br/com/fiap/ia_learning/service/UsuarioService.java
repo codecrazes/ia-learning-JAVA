@@ -5,13 +5,13 @@ import br.com.fiap.ia_learning.entity.Usuario;
 import br.com.fiap.ia_learning.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor
@@ -19,34 +19,36 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MessageSource messageSource;
 
-    @CacheEvict(value = "usuarios", allEntries = true)
+    private String msg(String codigo) {
+        Locale locale = LocaleContextHolder.getLocale();
+        return messageSource.getMessage(codigo, null, locale);
+    }
+
     public Usuario criar(UsuarioDto dto) {
-
         Usuario u = new Usuario();
         u.setNome(dto.getNome());
         u.setEmail(dto.getEmail());
         u.setSenha(passwordEncoder.encode(dto.getSenha()));
         u.setProfissao(dto.getProfissao());
         u.setRole("USER");
-
         return usuarioRepository.save(u);
     }
 
-    @Cacheable(value = "usuarios", key = "#id")
     public Usuario buscarPorId(Long id) {
-        System.out.println("🔍 BUSCANDO NO BANCO...");
         return usuarioRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
+                .orElseThrow(() ->
+                        new EntityNotFoundException(
+                                msg("usuario.nao.encontrado")
+                        )
+                );
     }
 
-    @Cacheable(value = "usuariosList")
     public List<Usuario> listar() {
-        System.out.println("🗂️ LISTANDO NO BANCO...");
         return usuarioRepository.findAll();
     }
 
-    @CacheEvict(value = { "usuarios", "usuariosList" }, allEntries = true)
     public Usuario atualizar(Long id, UsuarioDto dto) {
         Usuario usuario = buscarPorId(id);
 
@@ -58,7 +60,6 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    @CacheEvict(value = { "usuarios", "usuariosList" }, allEntries = true)
     public void deletar(Long id) {
         Usuario usuario = buscarPorId(id);
         usuarioRepository.delete(usuario);
@@ -66,6 +67,10 @@ public class UsuarioService {
 
     public Usuario buscarPorEmail(String email) {
         return usuarioRepository.findByEmail(email)
-                .orElseThrow(() -> new EntityNotFoundException("Email não encontrado"));
+                .orElseThrow(() ->
+                        new EntityNotFoundException(
+                                msg("usuario.nao.encontrado")
+                        )
+                );
     }
 }

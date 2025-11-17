@@ -8,9 +8,12 @@ import br.com.fiap.ia_learning.repository.RecomendacaoRepository;
 import br.com.fiap.ia_learning.repository.TarefaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor
@@ -19,11 +22,21 @@ public class RecomendacaoService {
     private final TarefaRepository tarefaRepository;
     private final RecomendacaoRepository recomendacaoRepository;
     private final IARecomendadorGenerativo iaRecomendador;
+    private final MessageSource messageSource;
+
+    private String msg(String codigo) {
+        Locale locale = LocaleContextHolder.getLocale();
+        return messageSource.getMessage(codigo, null, locale);
+    }
 
     public Recomendacao gerarRecomendacao(Long tarefaId) {
 
         Tarefa tarefa = tarefaRepository.findById(tarefaId)
-                .orElseThrow(() -> new EntityNotFoundException("Tarefa não encontrada"));
+                .orElseThrow(() ->
+                        new EntityNotFoundException(
+                                msg("tarefa.nao.encontrada")
+                        )
+                );
 
         Usuario usuario = tarefa.getUsuario();
 
@@ -46,6 +59,10 @@ public class RecomendacaoService {
 
     public Recomendacao buscarPorId(Long id) {
         return recomendacaoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Recomendação não encontrada"));
+                .orElseThrow(() ->
+                        new EntityNotFoundException(
+                                msg("recomendacao.nao.encontrada")
+                        )
+                );
     }
 }
