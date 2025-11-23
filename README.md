@@ -60,6 +60,25 @@ docker run --name ialearning-db ^
   setx OPENAI_API_KEY ""
  ```
 
+## 🧪 Como Executar o Projeto
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/codecrazes/ia-learning-JAVA.git
+```
+Subir o banco com Docker:
+
+```bash
+docker start ialearning-db
+```
+(caso ainda não tenha criado, usar o comando completo mostrado acima)
+
+Rodar a aplicação:
+```bash
+mvn spring-boot:run
+```
+
 ## 🌐 Documentação da API
 
 Swagger disponível em:
