@@ -109,4 +109,27 @@ Swagger disponível em:
 - **Usuário:** `jose@gmail.com`  
 - **Senha:** `1234`
 
+### IA
+```bash
+{
+  "nome": "EcoIA",
+  "descricao": "IA para recomendações sustentáveis",
+  "tipo": "sustentavel",
+  "ecoScore": 92
+}
+```
+
+### Tarefa
+```bash
+{
+  "titulo": "Estudar Spring Security",
+  "descricao": "Preciso aprender como configurar roles e autenticação na API.",
+  "dificuldade": "médio",
+  "tempoDisponivel": 60,
+  "usuario": {
+    "id": 1
+  }
+}
+```
+
 
