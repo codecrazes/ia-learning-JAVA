@@ -27,6 +27,8 @@ A proposta é mostrar como a IA pode ser utilizada como ferramenta de aprendizad
 
 ---
 
+## 🔄 Exemplos de Requisições (JSON para Teste)
+
 ### Usuario
 
 ```bash
