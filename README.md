@@ -29,14 +29,21 @@ A proposta é mostrar como a IA pode ser utilizada como ferramenta de aprendizad
 
 ## ⚙️ Tecnologias Utilizadas
 
-- Java 17  
-- Spring Boot  
-- Spring Data JPA  
-- Spring Security 
-- MySQL 8 (em container Docker)  
-- Maven
-- Azure
-- Spring AI
+☕ Java 17
+
+🌱 Spring Boot
+
+🔐 Spring Security + UserDetailsService
+
+🧠 Spring AI + OpenAI API
+
+🗃 MySQL
+
+📘 Swagger / OpenAPI
+
+🌍 i18n Internacionalização
+
+⚙️ Arquitetura MVC
 
 ---
 
