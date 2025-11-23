@@ -26,3 +26,25 @@ A proposta é mostrar como a IA pode ser utilizada como ferramenta de aprendizad
 - Luis Henrique Gomes Cardoso - RM 558883  
 
 ---
+
+### Usuario
+
+```bash
+{
+  "nome": "Jose Bezerra",
+  "email": "jose@gmail.com",
+  "senha": "1234",
+  "profissao": "dev"
+}
+```
+### Login
+
+- **Usuário:** `jose@gmail.com`  
+- **Senha:** `1234`
+
+2. Criar a variável de ambiente da OpenAI
+  
+ ```bash
+  setx OPENAI_API_KEY ""
+ ```
+
