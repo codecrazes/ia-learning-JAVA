@@ -27,6 +27,45 @@ A proposta é mostrar como a IA pode ser utilizada como ferramenta de aprendizad
 
 ---
 
+## ⚙️ Tecnologias Utilizadas
+
+- Java 17  
+- Spring Boot  
+- Spring Data JPA  
+- Spring Security 
+- MySQL 8 (em container Docker)  
+- Maven
+- Azure
+- Spring AI
+
+---
+
+## 🐳 Banco de Dados com Docker
+
+Para subir o banco de dados MySQL, utilizamos o Docker. O comando usado foi:
+
+```bash
+docker run --name ialearning-db ^
+  -e MYSQL_ROOT_PASSWORD=1234 ^
+  -e MYSQL_DATABASE=ialearning ^
+  -e MYSQL_USER=iauser ^
+  -e MYSQL_PASSWORD=1234 ^
+  -p 3306:3306 ^
+  -d mysql:8.0
+```
+
+2. Criar a variável de ambiente da OpenAI
+  
+ ```bash
+  setx OPENAI_API_KEY ""
+ ```
+
+## 🌐 Documentação da API
+
+Swagger disponível em:
+
+[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
 ## 🔄 Exemplos de Requisições (JSON para Teste)
 
 ### Usuario
@@ -44,9 +83,4 @@ A proposta é mostrar como a IA pode ser utilizada como ferramenta de aprendizad
 - **Usuário:** `jose@gmail.com`  
 - **Senha:** `1234`
 
-2. Criar a variável de ambiente da OpenAI
-  
- ```bash
-  setx OPENAI_API_KEY ""
- ```
 
