@@ -129,6 +129,12 @@ Swagger disponível em:
   "usuarioId": 1
 }
 ```
+### Tarefa com paginação 
+
+| Nome     | Tipo | Exemplo |
+|----------|------|---------|
+| page     | int  | `1`     |
+| pageSize | int  | `5`     |
 
 ### Avaliação
 
