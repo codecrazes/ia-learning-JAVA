@@ -140,4 +140,6 @@ Swagger disponível em:
   "iaId": 1
 }
 ```
+## Configuração Inicial no Spring Initializr com dependências.
 
+![Spring Initializr com dependências](SpringInitializr_GS.png)
