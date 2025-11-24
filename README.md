@@ -124,12 +124,20 @@ Swagger disponível em:
 {
   "titulo": "Estudar Spring Security",
   "descricao": "Preciso aprender como configurar roles e autenticação na API.",
-  "dificuldade": "médio",
+  "dificuldade": "medio",
   "tempoDisponivel": 60,
-  "usuario": {
-    "id": 1
-  }
+  "usuarioId": 1
 }
 ```
 
+### Avaliação
+
+```bash
+{
+  "nota": 5,
+  "comentario": "Muito boa",
+  "usuarioId": 1,
+  "iaId": 1
+}
+```
 
